@@ -1,6 +1,7 @@
 :root{
     --testColor: aquamarine;
     --testColor2: lightgreen;
+    --kindaGray: rgba(0, 0, 0, 0.12);
 }
 
 *{
@@ -24,13 +25,13 @@
     height: 15%;
     display: flex;
     flex-direction: row;
+    border-top: 1px solid var(--kindaGray);
 }
 .musicPlayerDiv .musicInfoDiv{
     height: 100%;
     width: 20%;
     display: flex;
     flex-direction: row;
-    background-color: var(--testColor);
 }
 .musicInfoDiv .infoDiv{
     height: 100%;
@@ -40,7 +41,6 @@
     gap: 4%;
     justify-content: center;
     padding: 0 0 0 8%;
-    background-color: var(--testColor2);
 }
 .musicInfoDiv .infoDiv .songName{
     font-size: 18px;
@@ -63,4 +63,65 @@
     height: 20px;
     cursor: pointer;
 }
-/* .controlsDiv .mainControlsDiv */
+.controlsDiv{
+    display: flex;
+    width: 80%;
+    /* background-color: var(--testColor); */
+}
+.controlsDiv .mainControlsDiv{
+    width: 80%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    padding: 1%;
+    gap: 15%;
+}
+.controlsDiv .mainControlsDiv .timeStampsDiv{
+    /* background-color: var(--testColor2); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    font-size: 20px;
+    gap: 1%;
+}
+.controlsDiv .mainControlsDiv .timeStampsDiv .timelineBar{
+    width: 60%;
+    height: 8px;
+    border-radius: 10px;
+    background-color: var(--kindaGray);
+}
+.controlsDiv .mainControlsDiv .flowControlsDiv{
+    /* background-color: var(--testColor2); */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    gap: 5%;
+}
+.controlsDiv .mainControlsDiv .flowControlsDiv img{
+    width: 30px;
+    height: 30px;
+    cursor: pointer;
+}
+.otherControlsDiv{
+    width: 20%;
+    height: 100%;
+    display: flex;
+}
+.otherControlsDiv .otherControlsContainer{
+    margin: auto 0 auto 0px;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 15%;
+    width: 90%;
+    height: 50%;
+    background-color: var(--kindaGray);
+}
+.otherControlsDiv .otherControlsContainer img{
+    width: 23px;
+    height: 25px;
+}
