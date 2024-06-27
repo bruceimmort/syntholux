@@ -4,6 +4,38 @@ import icons from "../utils/icons";
 
 export default function Home(){
     const [playing, setPlaying] = useState(true);
+    const [speaker, setSpeaker] = useState(true);
+    const [repeat, setRepeat] = useState(true);
+    const [expand, setExpand] = useState(true);
+
+    const handlePlaying = () => {
+        if(playing){
+            setPlaying(false);
+        }else{
+            setPlaying(true);
+        }
+    }
+    const handleRepeat = () => {
+        if(repeat){
+            setRepeat(false);
+        }else{
+            setRepeat(true);
+        }
+    }
+    const handleMute = () => {
+        if(speaker){
+            setSpeaker(false);
+        }else{
+            setSpeaker(true);
+        }
+    }
+    const handleExpand = () => {
+        if(expand){
+            setExpand(false);
+        }else{
+            setExpand(true);
+        }
+    }
     return(
         <>
         <div className="all">
@@ -30,20 +62,38 @@ export default function Home(){
                         </div>
                         <div className="flowControlsDiv">
                             <img src={icons.prevIcon} alt="" title="Previous"/>
-                            <div className="play/play" title="Play / Pause">
+                            <div className="play/play" title="Play / Pause" onClick={handlePlaying}>
                                 {playing  ? 
                                 <img src={icons.pausedIcon} alt=""/>
                                 : 
-                                <img src={icons.heartIcon} alt=""/>}
+                                <img src={icons.playingIcon} alt=""/>}
                             </div>
                             <img src={icons.nextIcon} alt="" title="Next"/>
                         </div>
                     </div>
                     <div className="otherControlsDiv">
                         <div className="otherControlsContainer">
-                            <img src={icons.repeatIcon} alt="" />
-                            <img src={icons.speakerIcon} alt="" />
-                            <img src={icons.expandIcon} alt="" />
+                            <div className="repeat/repeat-one" title={repeat ? "Repeat one" : "Repeat"} onClick={handleRepeat}>
+                            {repeat ?
+                                <img src={icons.repeatIcon} alt="" />
+                            :
+                                <img src={icons.repeatOneIcon} alt="" />
+                            }
+                            </div>
+                            <div className="speaker/mute"title={speaker ? "Mute" : "Unmute"} onClick={handleMute}>
+                            {speaker ?
+                                <img src={icons.speakerIcon} alt="" />
+                                :
+                                <img src={icons.muteIcon} alt="" />
+                            }
+                            </div>
+                            <div className="expand/minimise"title={expand ? "Expand" : "Minimize"} onClick={handleExpand}>
+                            {expand ?
+                                <img src={icons.expandIcon} alt="" />
+                                :
+                                <img src={icons.minimizeIcon} alt="" />
+                            }
+                            </div>
                         </div>
                     </div>
                 </div>
