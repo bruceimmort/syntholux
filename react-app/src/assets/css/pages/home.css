@@ -19,7 +19,86 @@
 .containerDiv{
     width: 100%;
     height: 85%;
+    display: flex;
+    flex-direction: row;
 }
+
+/* Side bar */
+
+.sideBar{
+    height: 100%;
+    width: 18%;
+    /* background-color: aquamarine; */
+    border-right: 1px solid var(--kindaGray);
+    display: flex;
+    flex-direction: column;
+    padding: 1% 1% 0 1%;
+    gap: 5%;
+}
+.sideBar .logoDiv{
+    width: 100%;
+    height: fit-content;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 22px;
+}
+.artistsMenuDiv,
+.menuDiv{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+.artistsMenuDiv p,
+.menuDiv p{
+    font-size: 14px;
+}
+.MenuBtnComponent{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    gap: 15%;
+    padding: 8px 10% 8px 10%;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.ArtistBtnComponent{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    font-size: 14px;
+    gap: 10%;
+    padding: 8px 5% 8px 5%;
+    align-items: center;
+    border-radius: 5px;
+    cursor: pointer;
+}
+.ArtistBtnComponent img{
+    width: 30px;
+    height: 30px;
+    border-radius: 15px;
+}
+.ArtistBtnComponent:hover,
+.MenuBtnComponent:hover{
+    background-color: var(--kindaGray);
+}
+.MenuBtnComponent img{
+    width: 20px;
+    height: 20px;
+}
+.buttonComponent{
+    font-size: 16px;
+    border: none;
+    border-radius: 5px;
+    padding: 10px;
+    cursor: pointer;
+}
+
+/* Bottom music player */
+
 .musicPlayerDiv{
     width: 100%;
     height: 15%;
@@ -43,11 +122,11 @@
     padding: 0 0 0 8%;
 }
 .musicInfoDiv .infoDiv .songName{
-    font-size: 18px;
+    font-size: 14px;
     font-weight: bold;
 }
 .musicInfoDiv .infoDiv .artistName{
-    font-size: 17px;
+    font-size: 13px;
     font-weight: bold;
     color: rgb(78, 78, 78);
 }
@@ -59,8 +138,8 @@
     justify-content: center;
 }
 .likeSongDiv img{
-    width: 20px;
-    height: 20px;
+    width: 16px;
+    height: 16px;
     cursor: pointer;
 }
 .controlsDiv{
@@ -82,12 +161,12 @@
     align-items: center;
     justify-content: center;
     width: 100%;
-    font-size: 20px;
+    font-size: 15px;
     gap: 1%;
 }
 .controlsDiv .mainControlsDiv .timeStampsDiv .timelineBar{
     width: 60%;
-    height: 8px;
+    height: 6px;
     border-radius: 10px;
     background-color: var(--kindaGray);
 }
@@ -100,8 +179,8 @@
     gap: 5%;
 }
 .controlsDiv .mainControlsDiv .flowControlsDiv img{
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     cursor: pointer;
 }
 .otherControlsDiv{
@@ -117,11 +196,11 @@
     align-items: center;
     justify-content: center;
     gap: 15%;
-    width: 90%;
+    width: 70%;
     height: 50%;
     background-color: var(--kindaGray);
 }
 .otherControlsDiv .otherControlsContainer img{
-    width: 23px;
-    height: 25px;
+    width: 18px;
+    height: 18px;
 }
