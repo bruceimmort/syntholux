@@ -5,6 +5,7 @@ import './App.css'
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './pages/home'
+import UploadSong from './componets/popups/uploadSong'
 
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
     <Router>
       <Routes>
         <Route path="/" element={<Home/>}></Route>
+        <Route path="/sandbox" element={<UploadSong/>}></Route>
       </Routes>
     </Router>
   )

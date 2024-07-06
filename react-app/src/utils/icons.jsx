@@ -12,6 +12,8 @@ import repeatOneIcon from "../assets/icons/repeat-one.png"
 import minimizeIcon from "../assets/icons/minimize.png"
 import playlistIcon from "../assets/icons/playlist.png"
 import settingsIcon from "../assets/icons/settings.png"
+import writeIcon from "../assets/icons/edit-text.png"
+import browseIcon from "../assets/icons/browse-song.png"
 
 import mjImage from "../assets/images/mj.png"
 import bruceImage from "../assets/images/bruce-melodie.png"
@@ -32,6 +34,8 @@ export default {
     minimizeIcon,
     playlistIcon,
     settingsIcon,
+    writeIcon,
+    browseIcon,
     mjImage,
     bruceImage,
     mariahImage
