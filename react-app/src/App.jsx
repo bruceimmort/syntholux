@@ -5,7 +5,7 @@ import './App.css'
 import React from 'react'
 import { BrowserRouter as Router, Route, Routes } from 'react-router-dom'
 import Home from './pages/home'
-import UploadSong from './componets/popups/uploadSong'
+import UploadSong from './components/popups/uploadSong'
 
 
 function App() {

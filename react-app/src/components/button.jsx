@@ -1,0 +1,7 @@
+import * as React from 'react';
+
+export default function Button(props) {
+  return (
+    <button className='buttonComponent' style={{backgroundColor: props.backgroundColor, color: props.color, width: props.width}} onClick={props.onClick}> {props.text}</button>
+  );
+}
