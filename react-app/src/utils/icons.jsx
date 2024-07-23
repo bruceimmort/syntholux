@@ -15,6 +15,7 @@ import settingsIcon from "../assets/icons/settings.png"
 import writeIcon from "../assets/icons/edit-text.png"
 import browseIcon from "../assets/icons/browse-song.png"
 import searchIcon from "../assets/icons/search.png"
+import threeDotsIcon from "../assets/icons/three-dots.png"
 
 import mjImage from "../assets/images/mj.png"
 import bruceImage from "../assets/images/bruce-melodie.png"
@@ -40,6 +41,7 @@ export default {
     writeIcon,
     browseIcon,
     searchIcon,
+    threeDotsIcon,
     mjImage,
     bruceImage,
     mariahImage,
