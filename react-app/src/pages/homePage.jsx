@@ -1,5 +1,6 @@
 import { useState } from "react";
 import "../assets/css/pages/home.css";
+import RecentSong from "../components/recentlySong";
 import icons from "../utils/icons";
 
 export default function HomeContainer() {
@@ -14,6 +15,18 @@ export default function HomeContainer() {
                         <img src={icons.searchIcon} alt="" />
                     </div>
                     <img className="profilePicture" src={icons.profileImage} alt="" />
+                </div>
+                <div className="homeContainerDiv">
+                    <div className="recently">
+                        Recently played
+                        <div className="recentlyList">
+                            <RecentSong cover={icons.adeleImage} song="Easy on me" artist="Adele"/>
+                            <RecentSong cover={icons.adeleImage} song="Easy on me" artist="Adele"/>
+                            <RecentSong cover={icons.adeleImage} song="Easy on me" artist="Adele"/>
+                            <RecentSong cover={icons.adeleImage} song="Easy on me" artist="Adele"/>
+                            <RecentSong cover={icons.adeleImage} song="Easy on me" artist="Adele"/>
+                        </div>
+                    </div>
                 </div>
             </div>
         </>

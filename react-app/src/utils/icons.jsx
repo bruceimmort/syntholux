@@ -19,6 +19,7 @@ import searchIcon from "../assets/icons/search.png"
 import mjImage from "../assets/images/mj.png"
 import bruceImage from "../assets/images/bruce-melodie.png"
 import mariahImage from "../assets/images/mariah-carey.png"
+import adeleImage from "../assets/images/adele.png"
 import profileImage from "../assets/images/profile.png"
 
 export default {
@@ -42,5 +43,6 @@ export default {
     mjImage,
     bruceImage,
     mariahImage,
+    adeleImage,
     profileImage
 }

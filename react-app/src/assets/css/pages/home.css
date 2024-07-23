@@ -102,7 +102,7 @@
 /* Home Container */
 
 .homeContainer{
-    width: 100%; 
+    width: 88%; 
     height: 100%; 
 }
 .homeHeaderDiv{
@@ -149,14 +149,67 @@
     height: 88%;
     display: flex;
     flex-direction: column;
-    background-color: lightblue; 
 }
-.recently{
+.recently {
+    display: flex;
+    flex-direction: column;
     width: 100%;
-    height: 30%;
-    padding: 0 0 0 4%;
-    background-color: var(--kindaGray);
+    height: 60%;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    padding: 0 0 21px 4%;
+    gap: 10px;
+    -webkit-overflow-scrolling: touch; /* Ensures smooth scrolling on touch devices */
 }
+
+.recently::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge */
+.recently {
+    -ms-overflow-style: none;
+}
+
+/* Hide scrollbar for Firefox */
+.recently {
+    scrollbar-width: none;
+}
+
+.recentlyList{
+    display: flex;
+    gap: 2%;
+}
+.recentSongDiv{
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+    gap: 2%;
+    min-width: 185px;
+    padding: 1% 2% 1% 3%;
+    border-radius: 2px;
+    align-items: start;
+    justify-content: center;
+    cursor: pointer;
+    box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+}
+.recentSongDiv:hover{
+    box-shadow: rgba(0, 0, 0, 0.164) 0px 4px 12px;
+}
+.recentSongDiv img {
+    width: 130px;
+    height: 130px;
+    object-fit: contain;
+}
+.recentSongDesc{
+    display: flex;
+    flex-direction: column;
+}
+.recentSong{
+    font-size: 14px;
+    font-weight: bold;
+}
+
 .mostlyPlayed{
     width: 100%;
     height: 70%;
