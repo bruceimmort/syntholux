@@ -14,10 +14,12 @@ import playlistIcon from "../assets/icons/playlist.png"
 import settingsIcon from "../assets/icons/settings.png"
 import writeIcon from "../assets/icons/edit-text.png"
 import browseIcon from "../assets/icons/browse-song.png"
+import searchIcon from "../assets/icons/search.png"
 
 import mjImage from "../assets/images/mj.png"
 import bruceImage from "../assets/images/bruce-melodie.png"
 import mariahImage from "../assets/images/mariah-carey.png"
+import profileImage from "../assets/images/profile.png"
 
 export default {
     heartIcon,
@@ -36,7 +38,9 @@ export default {
     settingsIcon,
     writeIcon,
     browseIcon,
+    searchIcon,
     mjImage,
     bruceImage,
-    mariahImage
+    mariahImage,
+    profileImage
 }

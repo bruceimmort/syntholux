@@ -5,6 +5,7 @@ import Button from "../components/button";
 import MenuBtn from "../components/menu";
 import UploadSong from "../components/popups/uploadSong";
 import icons from "../utils/icons";
+import HomeContainer from "./homePage";
 
 export default function Home() {
     const [popup, setPopup] = useState("");
@@ -66,6 +67,7 @@ export default function Home() {
                             onClick={() => setPopup("upload song")}
                         />
                     </div>
+                    <HomeContainer/>
                 </div>
                 {/* Bottom music player */}
                 <div className="musicPlayerDiv">
