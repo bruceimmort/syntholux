@@ -1,53 +1,51 @@
-import { useEffect, useState } from "react";
-import { collection, getDocs } from "firebase/firestore";
-import { db } from "../firebase";
 import "../assets/css/pages/home.css";
-import MostlyPlayed from "../components/mostlyPlayed";
-import RecentSong from "../components/recentlySong";
+import { logout } from "../firebase/auth";
 import icons from "../utils/icons";
+import { useUserSongs } from "../utils/functions";
+import MostlyPlayed from "../components/mostlyPlayed";
+import BeatLoader from "react-spinners/BeatLoader";
+import RecentSong from "../components/recentlySong";
 
 export default function HomeContainer() {
-    const [songs, setSongs] = useState([]);
+    const { songs, loading } = useUserSongs();
 
-    useEffect(() => {
-        const fetchSongs = async () => {
-            const querySnapshot = await getDocs(collection(db, "songs"));
-            const songsList = querySnapshot.docs.map(doc => doc.data());
-            setSongs(songsList);
-        };
-
-        fetchSongs();
-    }, []);
+    if (loading) {
+        return <div>Loading... <BeatLoader size={10} color="#000" /></div>;
+    }
 
     return (
-        <>
-            <div className="homeContainer">
-                <div className="homeHeaderDiv">
-                    <div className="searchBar">
-                        <input type="text" placeholder="Search songs and playlists" />
-                        <img src={icons.searchIcon} alt="" />
+        <div className="homeContainer font-mono">
+            <div className="homeHeaderDiv">
+                <img className="profilePicture" src={icons.profileImage} alt="" onClick={logout} />
+            </div>
+            <div className="homeContainerDiv">
+                {/* <div className="recently">
+                    Recently played
+                    <div className="recentlyList">
+                        {songs.map((song,index) => {
+                            <>
+                            <div key={index}></div>
+                            <RecentSong cover={icons.unnamedImage} song={song.name} artist={song.artist} />
+                            </>
+                        })}
                     </div>
-                    <img className="profilePicture" src={icons.profileImage} alt="" />
-                </div>
-                <div className="homeContainerDiv">
-                    <div className="recently">
-                        Recently played
-                        <div className="recentlyList">
-                            {songs.map((song, index) => (
-                                <RecentSong key={index} cover={icons.adeleImage} song={song.name} artist="Unknown" />
-                            ))}
-                        </div>
-                    </div>
-                    <div className="mostlyPlayed">
-                        Mostly played
-                        <div className="mostlyPlayedList">
-                            {songs.map((song, index) => (
-                                <MostlyPlayed key={index} cover={icons.adeleImage} duration="03:20" song={song.name} artist="Unknown" />
-                            ))}
-                        </div>
+                </div> */}
+                <div className="mostlyPlayed">
+                    Mostly played
+                    <div className="mostlyPlayedList">
+                        {songs.map((song, index) => (
+                            <MostlyPlayed
+                                key={index}
+                                cover={icons.unnamedImage}
+                                duration={song.duration ? `${Math.floor(song.duration / 60)}:${("0" + Math.floor(song.duration % 60)).slice(-2)}` : "Unknown"}
+                                song={song.name}
+                                artist={song.artist || "Unknown Artist"}
+                            />
+                        ))}
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 }
+

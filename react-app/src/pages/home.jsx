@@ -3,6 +3,7 @@ import "../assets/css/pages/home.css";
 import ArtistBtn from "../components/artistsMenu";
 import Button from "../components/button";
 import MenuBtn from "../components/menu";
+import MessageBox from "../components/popups/messageBox";
 import UploadSong from "../components/popups/uploadSong";
 import icons from "../utils/icons";
 import HomeContainer from "./homePage";
@@ -14,6 +15,7 @@ export default function Home() {
     const [repeat, setRepeat] = useState(true);
     const [liked, setLiked] = useState(false);
     const [expand, setExpand] = useState(true);
+    const [messageBox, setMessageBox] = useState("");
 
     const handlePlaying = () => {
         setPlaying(!playing);
@@ -41,7 +43,8 @@ export default function Home() {
 
     return (
         <>
-            {popup === "upload song" && <UploadSong onClose={handleClosePopup} />}
+            {popup === "upload song" && <UploadSong onClose={handleClosePopup} setMessageBox={setMessageBox} />}
+            {messageBox ? <MessageBox message={messageBox}/> : ""}
             <div className="all">
                 <div className="containerDiv">
                     <div className="sideBar">

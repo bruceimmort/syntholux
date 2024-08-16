@@ -1,67 +1,73 @@
-import { useState } from "react";
-import { storage, db } from "../../firebase"; // Adjust the path as needed
-import { ref, uploadBytesResumable, getDownloadURL } from "firebase/storage";
-import { collection, addDoc, getDocs } from "firebase/firestore";
+import React, { useState } from "react";
+import { handleSongUpload } from "../../utils/functions";
 import icons from "../../utils/icons";
 import Button from "../button";
 
-export default function UploadSong({ onClose }) {
-    const [songFile, setSongFile] = useState(null);
+export default function UploadSong({ onClose, setMessageBox }) {
+    const [selectedFile, setSelectedFile] = useState(null);
     const [songName, setSongName] = useState("");
-    const [description, setDescription] = useState("");
+    const [artistName, setArtistName] = useState("");
+    const [btnText, setBtnText] = useState("Upload Song");
 
     const handleFileChange = (e) => {
         const file = e.target.files[0];
-        if (file && file.type.startsWith("audio/") && file.duration <= 480) {
-            setSongFile(file);
-        } else {
-            alert("Please upload a valid audio file not exceeding 8 minutes.");
+        if (file) {
+            const audio = new Audio(URL.createObjectURL(file));
+            audio.addEventListener('loadedmetadata', () => {
+                const duration = audio.duration;
+                if (duration > 300) {
+                    handleMessageBox("The selected audio exceeds 5 minutes. Please choose another file.", setMessageBox);
+                    setSelectedFile(null);
+                } else {
+                    setSelectedFile(file);
+                }
+            });
         }
     };
 
-    const handleUpload = async () => {
-        if (!songFile || !songName) {
-            alert("Please provide all necessary information.");
-            return;
-        }
+    const closepopup = () => {
+        onClose()
+    }
 
-        const storageRef = ref(storage, `songs/${songFile.name}`);
-        const uploadTask = uploadBytesResumable(storageRef, songFile);
-
-        uploadTask.on("state_changed",
-            (snapshot) => {
-                // Handle progress
-            },
-            (error) => {
-                // Handle error
-                alert("Upload failed: " + error.message);
-            },
-            async () => {
-                // Handle successful upload
-                const downloadURL = await getDownloadURL(uploadTask.snapshot.ref);
-                await addDoc(collection(db, "songs"), {
-                    name: songName,
-                    description: description,
-                    url: downloadURL,
-                });
-                onClose();
-            }
-        );
+    const handleBrowseClick = () => {
+        document.getElementById("fileInput").click();
     };
 
     return (
         <div className="overlay" onClick={(e) => e.target === e.currentTarget && onClose()}>
             <div className="uploadSongContainer">
-                <div className="browseSong">
-                    <p>Browse song</p>
-                    <input type="file" accept="audio/*" onChange={handleFileChange} />
+                <div className="browseSong flex items-center cursor-pointer" onClick={handleBrowseClick}>
+                    <p className="fileName flex-grow mr-2 truncate max-w-[calc(100%-40px)]">
+                        {selectedFile ? selectedFile.name : "Browse song"}
+                    </p>
+                    <img src={icons.browseIcon} alt="Browse Icon" className="w-5 h-5" />
                 </div>
-                <div className="songName">
-                    <input type="text" placeholder="Song name" value={songName} onChange={(e) => setSongName(e.target.value)} />
-                    <img src={icons.writeIcon} alt="" />
+
+                <input type="file" id="fileInput" accept="audio/*" style={{ display: "none" }} onChange={handleFileChange} />
+
+                <div className="songName mt-4 flex items-center">
+                    <input 
+                        type="text" 
+                        placeholder="Song name" 
+                        value={songName}
+                        onChange={(e) => setSongName(e.target.value)}
+                    />
+                    <img src={icons.writeIcon} alt="Write Icon" className="ml-2 w-5 h-5" />
                 </div>
-                <textarea cols="30" rows="10" placeholder="Description ..." value={description} onChange={(e) => setDescription(e.target.value)}></textarea>
-                <Button text="Upload Song" backgroundColor="black" color="white" width="100%" onClick={handleUpload} />
+
+                <div className="songName mt-4 flex items-center">
+                    <input 
+                        type="text" 
+                        placeholder="Artist" 
+                        value={artistName}
+                        onChange={(e) => setArtistName(e.target.value)}
+                    />
+                    <img src={icons.writeIcon} alt="Write Icon" className="ml-2 w-5 h-5" />
+                </div>
+
+                <textarea className="mt-4 w-full p-2 border border-gray-300 rounded-md" cols="30" rows="10" placeholder="Description ..." ></textarea>
+                
+                <Button text={btnText} backgroundColor="black" color="white" width="100%" onClick={() => handleSongUpload(setBtnText, selectedFile, songName, artistName, setMessageBox, closepopup)} />
             </div>
         </div>
     );

@@ -16,6 +16,7 @@ import writeIcon from "../assets/icons/edit-text.png"
 import browseIcon from "../assets/icons/browse-song.png"
 import searchIcon from "../assets/icons/search.png"
 import threeDotsIcon from "../assets/icons/three-dots.png"
+import unnamedImage from "../assets/icons/unnamed.png"
 
 import mjImage from "../assets/images/mj.png"
 import bruceImage from "../assets/images/bruce-melodie.png"
@@ -46,5 +47,6 @@ export default {
     bruceImage,
     mariahImage,
     adeleImage,
-    profileImage
+    profileImage,
+    unnamedImage
 }
