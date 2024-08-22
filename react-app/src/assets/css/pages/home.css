@@ -222,12 +222,12 @@
     flex-wrap: wrap;
     overflow-x: hidden;
     overflow-y: scroll;
-    height: 90%;
-    padding: 10px 0 0 2px;
+    max-height: 90%;
+    padding: 10px 0 2px 2px;
     gap: 10px;
 }
 .mostlyPlayedDiv{
-    width: 44%;
+    width: 100%;
     height: fit-content;
     display: flex;
     flex-direction: row;

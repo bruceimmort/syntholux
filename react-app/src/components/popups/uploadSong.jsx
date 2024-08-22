@@ -65,7 +65,7 @@ export default function UploadSong({ onClose, setMessageBox }) {
                     <img src={icons.writeIcon} alt="Write Icon" className="ml-2 w-5 h-5" />
                 </div>
 
-                <textarea className="mt-4 w-full p-2 border border-gray-300 rounded-md" cols="30" rows="10" placeholder="Description ..." ></textarea>
+                {/* <textarea className="mt-4 w-full p-2 border border-gray-300 rounded-md" cols="30" rows="10" placeholder="Description ..." ></textarea> */}
                 
                 <Button text={btnText} backgroundColor="black" color="white" width="100%" onClick={() => handleSongUpload(setBtnText, selectedFile, songName, artistName, setMessageBox, closepopup)} />
             </div>
