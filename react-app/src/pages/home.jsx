@@ -134,7 +134,7 @@ export default function Home() {
                 <div className="containerDiv">
                     <div className="sideBar">
                         <div className="logoDiv">
-                            Sortify
+                            Syntholux
                         </div>
                         <div className="menuDiv">
                             <p>Menu</p>
